@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  frontend:
+    container_name: frontend_wms_<city>
+    image: 766423106308.dkr.ecr.ap-southeast-1.amazonaws.com/fe-wms-pdam:<image-tag>
+    env_file:
+      - ./.env
+    ports:
+      - "3000:3000"
+    networks:
+      - wms_pdam_<city>
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        "max-size": "10m"
+        "max-file": "5"
+
+networks:
+  wms_pdam_<city>:

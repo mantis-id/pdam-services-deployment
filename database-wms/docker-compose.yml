@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  db:
+    container_name: postgresql_wms_<city>
+    image: postgres
+    env_file:
+      - ./pgsql.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - /path/to/database-wms/postgresql-data:/var/lib/postgresql/data/
+    networks:
+      - wms_pdam_<city>
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        "max-size": "10m"
+        "max-file": "5"
+
+volumes:
+  postgresql-data:
+
+networks:
+  wms_pdam_<city>:
