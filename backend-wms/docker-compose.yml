@@ -18,3 +18,4 @@ services:
 
 networks:
   wms_pdam_<city>:
+    name: wms_pdam_<city>
